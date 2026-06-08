@@ -1,7 +1,267 @@
-<!DOCTYPE html??
-<html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Taehwan Jang</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      background: #f5f7fa;
+      color: #2d2d2d;
+      line-height: 1.7;
+    }
+
+    .disclaimer {
+      background: #fff3cd;
+      border-bottom: 1px solid #ffc107;
+      text-align: center;
+      padding: 10px 20px;
+      font-size: 0.82rem;
+      color: #664d03;
+    }
+
+    header {
+      background: #fff;
+      border-bottom: 1px solid #e2e8f0;
+      padding: 48px 24px 40px;
+      text-align: center;
+    }
+
+    .avatar {
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      object-fit: cover;
+      object-position: top;
+      border: 4px solid #e2e8f0;
+      margin-bottom: 20px;
+    }
+
+    header h1 {
+      font-size: 2rem;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+    }
+
+    header .role {
+      font-size: 1rem;
+      color: #4a6fa5;
+      font-weight: 500;
+      margin-top: 4px;
+    }
+
+    header .affiliation {
+      font-size: 0.9rem;
+      color: #888;
+      margin-top: 2px;
+    }
+
+    .links {
+      margin-top: 16px;
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .links a {
+      text-decoration: none;
+      color: #4a6fa5;
+      font-size: 0.88rem;
+      padding: 5px 14px;
+      border: 1px solid #c3d0e8;
+      border-radius: 20px;
+      transition: background 0.2s, color 0.2s;
+    }
+
+    .links a:hover { background: #4a6fa5; color: #fff; }
+
+    main {
+      max-width: 760px;
+      margin: 40px auto;
+      padding: 0 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 36px;
+    }
+
+    section {
+      background: #fff;
+      border-radius: 10px;
+      padding: 28px 32px;
+      border: 1px solid #e2e8f0;
+    }
+
+    section h2 {
+      font-size: 1.05rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #4a6fa5;
+      border-bottom: 2px solid #e8eef7;
+      padding-bottom: 10px;
+      margin-bottom: 18px;
+    }
+
+    section p { font-size: 0.95rem; color: #444; }
+
+    .entry {
+      display: flex;
+      gap: 16px;
+      margin-bottom: 18px;
+    }
+
+    .entry:last-child { margin-bottom: 0; }
+
+    .entry-year {
+      min-width: 80px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: #888;
+      padding-top: 3px;
+    }
+
+    .entry-body strong {
+      display: block;
+      font-size: 0.95rem;
+      color: #2d2d2d;
+    }
+
+    .entry-body span {
+      font-size: 0.87rem;
+      color: #666;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .tag {
+      background: #eef2fb;
+      color: #4a6fa5;
+      border-radius: 6px;
+      padding: 4px 12px;
+      font-size: 0.83rem;
+      font-weight: 500;
+    }
+
+    footer {
+      text-align: center;
+      padding: 32px 16px;
+      font-size: 0.8rem;
+      color: #aaa;
+    }
+  </style>
+</head>
 <body>
-  <h1>Welcome to my personal page</h1>
-  <p>Hosted on github page</p>
+
+  <div class="disclaimer">
+    ⚠️ <strong>Note:</strong> This is a fake placeholder page created by AI — all details below are fictional guesses and do not represent real facts.
+  </div>
+
+  <header>
+    <img src="assets/jth.jpg" alt="Taehwan Jang" class="avatar" />
+    <h1>Taehwan Jang</h1>
+    <div class="role">M.S. Student · Computer Science</div>
+    <div class="affiliation">Korea University — Seoul, South Korea</div>
+    <div class="links">
+      <a href="mailto:jjang36524@korea.ac.kr">Email</a>
+      <a href="https://github.com/jjang36524">GitHub</a>
+      <a href="#">CV</a>
+    </div>
+  </header>
+
+  <main>
+
+    <section>
+      <h2>About</h2>
+      <p>
+        I am a graduate student in Computer Science at Korea University, advised by Prof. (TBD).
+        My research interests lie at the intersection of machine learning and software systems —
+        with a particular focus on efficient model inference and data-centric AI.
+        I enjoy building tools that make research more reproducible and accessible.
+      </p>
+    </section>
+
+    <section>
+      <h2>Education</h2>
+      <div class="entry">
+        <div class="entry-year">2024 –<br>present</div>
+        <div class="entry-body">
+          <strong>M.S. in Computer Science</strong>
+          <span>Korea University, Seoul</span>
+        </div>
+      </div>
+      <div class="entry">
+        <div class="entry-year">2020 –<br>2024</div>
+        <div class="entry-body">
+          <strong>B.S. in Computer Science &amp; Engineering</strong>
+          <span>Korea University, Seoul — Graduated with Honors</span>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Research Interests</h2>
+      <div class="tags">
+        <span class="tag">Machine Learning</span>
+        <span class="tag">Model Compression</span>
+        <span class="tag">MLSys</span>
+        <span class="tag">Data-Centric AI</span>
+        <span class="tag">Computer Vision</span>
+        <span class="tag">Reproducibility</span>
+      </div>
+    </section>
+
+    <section>
+      <h2>Projects</h2>
+      <div class="entry">
+        <div class="entry-year">2024</div>
+        <div class="entry-body">
+          <strong>Lightweight Object Detector for Edge Devices</strong>
+          <span>Pruning &amp; quantization pipeline for real-time inference on mobile hardware.</span>
+        </div>
+      </div>
+      <div class="entry">
+        <div class="entry-year">2023</div>
+        <div class="entry-body">
+          <strong>Dataset Curation Toolkit</strong>
+          <span>CLI tools for cleaning and versioning large image datasets used in vision research.</span>
+        </div>
+      </div>
+      <div class="entry">
+        <div class="entry-year">2022</div>
+        <div class="entry-body">
+          <strong>Campus Room-Booking System</strong>
+          <span>Full-stack web app for managing study-room reservations at Korea University.</span>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Skills</h2>
+      <div class="tags">
+        <span class="tag">Python</span>
+        <span class="tag">PyTorch</span>
+        <span class="tag">C++</span>
+        <span class="tag">Java</span>
+        <span class="tag">Linux</span>
+        <span class="tag">Docker</span>
+        <span class="tag">Git</span>
+        <span class="tag">SQL</span>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    &copy; 2026 Taehwan Jang &nbsp;·&nbsp; Built with plain HTML
+  </footer>
+
 </body>
 </html>
