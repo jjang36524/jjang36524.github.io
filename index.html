@@ -4,363 +4,624 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Taehwan Jang</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet" />
   <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
+    /* ── TOKENS ── */
     :root {
-      --navy: #1a2744;
-      --blue: #2563eb;
-      --blue-light: #eff6ff;
-      --gold: #d97706;
-      --silver: #6b7280;
-      --bronze: #b45309;
-      --text: #1e293b;
-      --muted: #64748b;
-      --border: #e2e8f0;
-      --bg: #f8fafc;
+      --green:        #76b900;
+      --green-dark:   #5a8d00;
+      --green-pale:   #bff230;
+      --ink:          #000000;
+      --canvas:       #ffffff;
+      --surface-dark: #000000;
+      --surface-soft: #f7f7f7;
+      --surface-elev: #1a1a1a;
+      --hairline:     #cccccc;
+      --hairline-str: #5e5e5e;
+      --body:         #1a1a1a;
+      --mute:         #757575;
+      --stone:        #898989;
+      --ash:          #a7a7a7;
+      --on-dark:      #ffffff;
+      --on-dark-mute: rgba(255,255,255,0.7);
+      --link-blue:    #0046a4;
+      --r:            2px;   /* rounded.sm — universal */
     }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     html { scroll-behavior: smooth; }
 
     body {
-      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.7;
+      font-family: 'Inter', Arial, Helvetica, sans-serif;
+      font-size: 16px;
+      line-height: 1.5;
+      color: var(--body);
+      background: var(--canvas);
     }
 
-    /* ── NAV ── */
+    /* ── UTILITY BAR ── */
+    .util-bar {
+      background: var(--surface-elev);
+      color: var(--on-dark-mute);
+      font-size: 12px;
+      font-weight: 400;
+      line-height: 1.25;
+      height: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      padding: 0 48px;
+      gap: 24px;
+    }
+
+    .util-bar a {
+      color: var(--on-dark-mute);
+      text-decoration: none;
+    }
+    .util-bar a:hover { color: var(--on-dark); }
+
+    /* ── PRIMARY NAV ── */
     nav {
       position: sticky;
       top: 0;
-      z-index: 100;
-      background: var(--navy);
+      z-index: 200;
+      background: var(--surface-dark);
+      height: 64px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 0 32px;
-      height: 56px;
-      box-shadow: 0 2px 8px rgba(0,0,0,.25);
+      padding: 0 48px;
+      box-shadow: 0 0 5px 0 rgba(0,0,0,0.3);
     }
 
     .nav-brand {
-      color: #fff;
-      font-weight: 700;
-      font-size: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 10px;
       text-decoration: none;
-      letter-spacing: .3px;
+    }
+
+    .nav-logo-sq {
+      width: 28px;
+      height: 28px;
+      background: var(--green);
+      border-radius: 0;
+      flex-shrink: 0;
+    }
+
+    .nav-brand-name {
+      color: var(--on-dark);
+      font-size: 16px;
+      font-weight: 700;
+      line-height: 1.5;
+      letter-spacing: 0;
     }
 
     .nav-links {
       display: flex;
-      gap: 4px;
       list-style: none;
+      gap: 0;
     }
 
     .nav-links a {
-      color: #cbd5e1;
+      color: var(--on-dark-mute);
       text-decoration: none;
-      font-size: 0.88rem;
-      padding: 6px 14px;
-      border-radius: 6px;
-      transition: background .18s, color .18s;
+      font-size: 16px;
+      font-weight: 700;
+      line-height: 1.5;
+      padding: 0 16px;
+      height: 64px;
+      display: flex;
+      align-items: center;
+      border-bottom: 3px solid transparent;
+      transition: color 0.15s, border-color 0.15s;
     }
 
     .nav-links a:hover {
-      background: rgba(255,255,255,.12);
-      color: #fff;
+      color: var(--on-dark);
+      border-bottom-color: var(--green);
     }
 
     /* ── HERO ── */
     #home {
-      background: linear-gradient(135deg, var(--navy) 0%, #243b6e 100%);
-      color: #fff;
-      padding: 72px 24px 64px;
-      text-align: center;
+      background: var(--surface-dark);
+      color: var(--on-dark);
+      padding: 80px 48px;
+      display: flex;
+      align-items: center;
+      gap: 64px;
+      max-width: 1280px;
+      margin: 0 auto;
     }
 
-    .avatar {
-      width: 148px;
-      height: 148px;
-      border-radius: 50%;
+    .hero-photo {
+      width: 200px;
+      height: 200px;
+      border-radius: 9999px;
       object-fit: cover;
       object-position: top;
-      border: 4px solid rgba(255,255,255,.3);
-      margin-bottom: 24px;
+      border: 1px solid var(--hairline-str);
+      flex-shrink: 0;
     }
 
-    #home h1 {
-      font-size: 2.2rem;
-      font-weight: 800;
-      letter-spacing: -0.5px;
+    .hero-text { flex: 1; }
+
+    .hero-eyebrow {
+      font-size: 14px;
+      font-weight: 700;
+      line-height: 1.43;
+      letter-spacing: 0;
+      text-transform: uppercase;
+      color: var(--green);
+      margin-bottom: 12px;
     }
 
-    #home .subtitle {
-      font-size: 1.05rem;
-      color: #93c5fd;
-      margin-top: 6px;
-    }
-
-    #home .intro {
-      max-width: 560px;
-      margin: 18px auto 0;
-      font-size: 0.97rem;
-      color: #cbd5e1;
-      line-height: 1.75;
-    }
-
-    .hero-links {
-      margin-top: 28px;
-      display: flex;
-      justify-content: center;
-      gap: 12px;
-      flex-wrap: wrap;
-    }
-
-    .hero-links a {
-      text-decoration: none;
-      font-size: 0.88rem;
-      font-weight: 600;
-      padding: 8px 20px;
-      border-radius: 24px;
-      transition: .18s;
-    }
-
-    .btn-primary {
-      background: var(--blue);
-      color: #fff;
-    }
-    .btn-primary:hover { background: #1d4ed8; }
-
-    .btn-outline {
-      border: 1.5px solid rgba(255,255,255,.4);
-      color: #e2e8f0;
-    }
-    .btn-outline:hover { background: rgba(255,255,255,.1); }
-
-    /* ── SECTIONS ── */
-    section {
-      max-width: 820px;
-      margin: 0 auto;
-      padding: 60px 24px;
-    }
-
-    .section-title {
-      font-size: 1.35rem;
-      font-weight: 800;
-      color: var(--navy);
-      border-left: 4px solid var(--blue);
-      padding-left: 14px;
-      margin-bottom: 32px;
-    }
-
-    /* ── CARDS ── */
-    .card {
-      background: #fff;
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 24px 28px;
+    .hero-title {
+      font-size: 48px;
+      font-weight: 700;
+      line-height: 1.25;
+      color: var(--on-dark);
       margin-bottom: 16px;
     }
 
-    .card:last-child { margin-bottom: 0; }
-
-    /* ── EDUCATION ── */
-    .edu-entry {
-      display: flex;
-      gap: 20px;
-      align-items: flex-start;
+    .hero-sub {
+      font-size: 22px;
+      font-weight: 400;
+      line-height: 1.75;
+      color: var(--on-dark-mute);
+      margin-bottom: 8px;
     }
 
-    .edu-dot {
+    .hero-body {
+      font-size: 16px;
+      font-weight: 400;
+      line-height: 1.5;
+      color: var(--on-dark-mute);
+      max-width: 540px;
+      margin-bottom: 32px;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    /* ── BUTTONS ── */
+    .btn-primary {
+      background: var(--green);
+      color: var(--ink);
+      font-size: 16px;
+      font-weight: 700;
+      line-height: 1.25;
+      padding: 11px 24px;
+      height: 44px;
+      border: none;
+      border-radius: var(--r);
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      cursor: pointer;
+      transition: background 0.15s;
+    }
+    .btn-primary:hover { background: var(--green-dark); }
+
+    .btn-outline-dark {
+      background: transparent;
+      color: var(--on-dark);
+      font-size: 16px;
+      font-weight: 700;
+      line-height: 1.25;
+      padding: 11px 13px;
+      height: 44px;
+      border: 1px solid var(--on-dark);
+      border-radius: var(--r);
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      cursor: pointer;
+      transition: background 0.15s;
+    }
+    .btn-outline-dark:hover { background: rgba(255,255,255,0.08); }
+
+    .btn-ghost {
+      background: transparent;
+      color: var(--green);
+      font-size: 16px;
+      font-weight: 700;
+      line-height: 1.25;
+      padding: 0;
+      border: none;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      cursor: pointer;
+    }
+    .btn-ghost:hover { color: var(--green-dark); }
+
+    /* ── HERO WRAPPER (full bleed dark bg) ── */
+    .hero-section {
+      background: var(--surface-dark);
+    }
+
+    /* ── SECTION WRAPPER ── */
+    .section-wrap {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 64px 48px;
+    }
+
+    .section-wrap.soft {
+      background: var(--surface-soft);
+    }
+
+    .section-soft-full {
+      background: var(--surface-soft);
+    }
+
+    .section-dark-full {
+      background: var(--surface-dark);
+    }
+
+    /* ── SECTION HEADING ── */
+    .section-eyebrow {
+      font-size: 14px;
+      font-weight: 700;
+      line-height: 1.43;
+      text-transform: uppercase;
+      color: var(--green);
+      margin-bottom: 8px;
+    }
+
+    .section-title {
+      font-size: 36px;
+      font-weight: 700;
+      line-height: 1.25;
+      color: var(--ink);
+      margin-bottom: 32px;
+    }
+
+    .section-title.on-dark {
+      color: var(--on-dark);
+    }
+
+    /* ── CARD ── */
+    .card {
+      background: var(--canvas);
+      border: 1px solid var(--hairline);
+      border-radius: var(--r);
+      padding: 24px;
+      position: relative;
+    }
+
+    /* Corner square decorative motif */
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
       width: 12px;
       height: 12px;
-      border-radius: 50%;
-      background: var(--blue);
-      margin-top: 7px;
+      background: var(--green);
+    }
+
+    .card-title {
+      font-size: 17px;
+      font-weight: 700;
+      line-height: 1.47;
+      color: var(--ink);
+      margin-bottom: 8px;
+    }
+
+    .card-meta {
+      font-size: 12px;
+      font-weight: 400;
+      line-height: 1.25;
+      color: var(--mute);
+      margin-bottom: 8px;
+    }
+
+    .card-body {
+      font-size: 15px;
+      font-weight: 400;
+      line-height: 1.67;
+      color: var(--body);
+    }
+
+    /* ── EDUCATION GRID ── */
+    .edu-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+
+    /* ── RATING STATS ── */
+    .stat-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+      margin-bottom: 32px;
+    }
+
+    .stat-card {
+      background: var(--canvas);
+      border: 1px solid var(--hairline);
+      border-radius: var(--r);
+      padding: 32px 24px;
+      position: relative;
+    }
+
+    .stat-card::before {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      width: 12px;
+      height: 12px;
+      background: var(--green);
+    }
+
+    .stat-label {
+      font-size: 14px;
+      font-weight: 700;
+      line-height: 1.43;
+      text-transform: uppercase;
+      color: var(--mute);
+      margin-bottom: 12px;
+    }
+
+    .stat-number {
+      font-size: 48px;
+      font-weight: 700;
+      line-height: 1;
+      color: var(--ink);
+      margin-bottom: 8px;
+    }
+
+    .stat-sub {
+      font-size: 15px;
+      font-weight: 400;
+      line-height: 1.67;
+      color: var(--stone);
+    }
+
+    .stat-link {
+      display: inline-block;
+      margin-top: 12px;
+      font-size: 15px;
+      font-weight: 400;
+      line-height: 1.5;
+      color: var(--link-blue);
+      text-decoration: none;
+    }
+    .stat-link:hover { text-decoration: underline; }
+
+    /* ── AWARDS TABLE-STYLE ── */
+    .award-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 24px;
+      padding: 16px 0;
+      border-bottom: 1px solid var(--hairline);
+    }
+
+    .award-row:first-child { padding-top: 0; }
+    .award-row:last-child { border-bottom: none; padding-bottom: 0; }
+
+    .award-badge {
+      font-size: 11px;
+      font-weight: 700;
+      line-height: 1;
+      text-transform: uppercase;
+      padding: 4px 10px;
+      border-radius: var(--r);
       flex-shrink: 0;
+      margin-top: 3px;
+      min-width: 64px;
+      text-align: center;
     }
 
-    .edu-body strong {
-      font-size: 1rem;
-      display: block;
+    .badge-gold    { background: #fef3c7; color: #92400e; }
+    .badge-silver  { background: var(--surface-soft); color: var(--body); }
+    .badge-bronze  { background: #fde8d8; color: #7c3a12; }
+    .badge-special { background: #eff6ff; color: #1e40af; }
+
+    .award-title {
+      font-size: 17px;
+      font-weight: 700;
+      line-height: 1.47;
+      color: var(--ink);
     }
 
-    .edu-body .edu-meta {
-      font-size: 0.87rem;
-      color: var(--muted);
+    .award-detail {
+      font-size: 15px;
+      font-weight: 400;
+      line-height: 1.67;
+      color: var(--mute);
       margin-top: 2px;
     }
 
-    /* ── CP RATINGS ── */
-    .ratings-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 16px;
-      margin-bottom: 24px;
-    }
-
-    .rating-card {
-      background: #fff;
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 20px 24px;
-      text-align: center;
-    }
-
-    .rating-card .platform {
-      font-size: 0.82rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: .08em;
-      color: var(--muted);
-      margin-bottom: 6px;
-    }
-
-    .rating-card .rating-num {
-      font-size: 2rem;
-      font-weight: 800;
-      color: var(--blue);
-      line-height: 1;
-    }
-
-    .rating-card .rating-label {
-      font-size: 0.8rem;
-      color: var(--muted);
-      margin-top: 4px;
-    }
-
-    .rating-card a {
-      display: inline-block;
-      margin-top: 10px;
-      font-size: 0.82rem;
-      color: var(--blue);
-      text-decoration: none;
-    }
-    .rating-card a:hover { text-decoration: underline; }
-
-    /* ── AWARDS ── */
-    .award-entry {
-      display: flex;
-      gap: 16px;
-      align-items: flex-start;
-      padding: 16px 0;
-      border-bottom: 1px solid var(--border);
-    }
-
-    .award-entry:last-child { border-bottom: none; padding-bottom: 0; }
-    .award-entry:first-child { padding-top: 0; }
-
-    .medal {
-      font-size: 1.5rem;
-      min-width: 36px;
-      text-align: center;
-      padding-top: 2px;
-    }
-
-    .award-body strong {
-      display: block;
-      font-size: 0.97rem;
-    }
-
-    .award-body span {
-      font-size: 0.87rem;
-      color: var(--muted);
-    }
-
     /* ── COURSES ── */
-    .courses-grid {
+    .course-cols {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 16px;
+      gap: 24px;
     }
 
-    .course-group h3 {
-      font-size: 0.82rem;
+    .course-group-title {
+      font-size: 14px;
       font-weight: 700;
+      line-height: 1.43;
       text-transform: uppercase;
-      letter-spacing: .07em;
-      color: var(--blue);
-      margin-bottom: 10px;
+      color: var(--green);
+      padding-bottom: 8px;
+      border-bottom: 2px solid var(--green);
+      margin-bottom: 0;
     }
 
-    .course-group ul {
+    .course-list {
       list-style: none;
+      margin: 0;
       padding: 0;
     }
 
-    .course-group li {
-      font-size: 0.9rem;
-      color: var(--text);
-      padding: 4px 0;
-      border-bottom: 1px solid var(--border);
+    .course-list li {
+      font-size: 15px;
+      font-weight: 400;
+      line-height: 1.67;
+      color: var(--body);
+      padding: 10px 0;
+      border-bottom: 1px solid var(--hairline);
     }
 
-    .course-group li:last-child { border-bottom: none; }
+    .course-list li:last-child { border-bottom: none; }
 
     /* ── CONTACT ── */
-    .contact-row {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      padding: 14px 0;
-      border-bottom: 1px solid var(--border);
-      font-size: 0.95rem;
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
     }
 
-    .contact-row:last-child { border-bottom: none; }
-
-    .contact-icon {
-      width: 36px;
-      height: 36px;
-      border-radius: 8px;
-      background: var(--blue-light);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-      font-size: 1rem;
+    .contact-card {
+      background: var(--canvas);
+      border: 1px solid var(--hairline);
+      border-radius: var(--r);
+      padding: 24px;
+      position: relative;
     }
 
-    .contact-row a {
-      color: var(--blue);
+    .contact-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 12px;
+      height: 12px;
+      background: var(--green);
+    }
+
+    .contact-type {
+      font-size: 12px;
+      font-weight: 700;
+      line-height: 1.25;
+      text-transform: uppercase;
+      color: var(--mute);
+      margin-bottom: 8px;
+    }
+
+    .contact-value {
+      font-size: 15px;
+      font-weight: 400;
+      line-height: 1.67;
+    }
+
+    .contact-value a {
+      color: var(--link-blue);
       text-decoration: none;
     }
-    .contact-row a:hover { text-decoration: underline; }
+    .contact-value a:hover { text-decoration: underline; }
 
-    /* ── AI NOTE ── */
-    .ai-note {
-      background: #fff;
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 16px 22px;
-      font-size: 0.83rem;
-      color: var(--muted);
-      margin-top: 24px;
-      line-height: 1.6;
+    /* ── AI DISCLOSURE ── */
+    .ai-strip {
+      background: var(--surface-soft);
+      border-top: 1px solid var(--hairline);
+      border-bottom: 1px solid var(--hairline);
+      padding: 12px 48px;
+      font-size: 12px;
+      font-weight: 400;
+      line-height: 1.25;
+      color: var(--mute);
+      max-width: 100%;
     }
 
     /* ── FOOTER ── */
     footer {
-      text-align: center;
-      padding: 28px 16px;
-      font-size: 0.8rem;
-      color: var(--muted);
-      border-top: 1px solid var(--border);
+      background: var(--surface-dark);
+      padding: 64px 48px 32px;
     }
 
-    @media (max-width: 580px) {
-      .ratings-grid, .courses-grid { grid-template-columns: 1fr; }
-      nav { padding: 0 16px; }
-      .nav-links a { padding: 6px 10px; }
+    .footer-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+
+    .footer-divider {
+      border: none;
+      border-top: 1px solid var(--hairline-str);
+      margin: 32px 0 24px;
+    }
+
+    .footer-bottom {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .footer-copy {
+      font-size: 12px;
+      font-weight: 400;
+      line-height: 1.25;
+      color: var(--on-dark-mute);
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 24px;
+      list-style: none;
+    }
+
+    .footer-links a {
+      font-size: 12px;
+      font-weight: 400;
+      line-height: 1.25;
+      color: var(--on-dark-mute);
+      text-decoration: none;
+    }
+    .footer-links a:hover { color: var(--on-dark); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      nav, .util-bar { padding: 0 24px; }
+      .nav-links { display: none; }
+      #home { flex-direction: column; padding: 48px 24px; gap: 32px; }
+      .hero-title { font-size: 32px; }
+      .hero-sub { font-size: 18px; }
+      .section-wrap { padding: 48px 24px; }
+      .section-title { font-size: 28px; }
+      .edu-grid, .stat-grid, .contact-grid, .course-cols { grid-template-columns: 1fr; }
+      .stat-number { font-size: 36px; }
+      footer { padding: 40px 24px 24px; }
+      .ai-strip { padding: 12px 24px; }
+    }
+
+    @media (max-width: 1100px) {
+      .stat-grid { grid-template-columns: 1fr 1fr; }
+      .contact-grid { grid-template-columns: 1fr 1fr; }
     }
   </style>
 </head>
 <body>
 
-  <!-- NAV -->
+  <!-- UTILITY BAR -->
+  <div class="util-bar">
+    <a href="mailto:jjang36524@snu.ac.kr">jjang36524@snu.ac.kr</a>
+    <a href="https://github.com/jjang36524" target="_blank">GitHub</a>
+  </div>
+
+  <!-- PRIMARY NAV -->
   <nav>
-    <a href="#home" class="nav-brand">Taehwan Jang</a>
+    <a href="#home" class="nav-brand">
+      <div class="nav-logo-sq"></div>
+      <span class="nav-brand-name">Taehwan Jang</span>
+    </a>
     <ul class="nav-links">
       <li><a href="#home">Home</a></li>
       <li><a href="#education">Education</a></li>
@@ -372,136 +633,145 @@
   </nav>
 
   <!-- HERO -->
-  <div id="home">
-    <img src="assets/jth.jpg" alt="Taehwan Jang" class="avatar" />
-    <h1>Taehwan Jang</h1>
-    <div class="subtitle">B.S. Student · Computer Science &amp; Engineering · Seoul National University</div>
-    <p class="intro">
-      I'm a competitive programmer and CSE undergraduate at Seoul National University.
-      I specialize in algorithms and problem solving, having represented South Korea
-      at the International Olympiad in Informatics (IOI) and the
-      Asia-Pacific Informatics Olympiad (APIO).
-    </p>
-    <div class="hero-links">
-      <a class="btn-primary" href="assets/CV.pdf" target="_blank">Download CV</a>
-      <a class="btn-outline" href="https://github.com/jjang36524" target="_blank">GitHub</a>
-      <a class="btn-outline" href="https://codeforces.com/profile/jjang36524" target="_blank">Codeforces</a>
-      <a class="btn-outline" href="mailto:jjang36524@snu.ac.kr">Email</a>
+  <div class="hero-section">
+    <div id="home">
+      <img src="assets/jth.jpg" alt="Taehwan Jang" class="hero-photo" />
+      <div class="hero-text">
+        <div class="hero-eyebrow">Computer Science &amp; Engineering</div>
+        <h1 class="hero-title">Taehwan Jang</h1>
+        <div class="hero-sub">B.S. Student · Seoul National University</div>
+        <p class="hero-body">
+          Competitive programmer and CSE undergraduate at Seoul National University.
+          Twice an IOI medalist, back-to-back APIO Top Gold champion, and Codeforces
+          International Grandmaster — specializing in algorithms and problem solving.
+        </p>
+        <div class="hero-actions">
+          <a class="btn-primary" href="assets/CV.pdf" target="_blank">Download CV</a>
+          <a class="btn-outline-dark" href="https://codeforces.com/profile/jjang36524" target="_blank">Codeforces Profile</a>
+          <a class="btn-outline-dark" href="https://github.com/jjang36524" target="_blank">GitHub</a>
+        </div>
+      </div>
     </div>
   </div>
 
   <!-- EDUCATION -->
-  <section id="education">
-    <div class="section-title">Education</div>
-
-    <div class="card">
-      <div class="edu-entry">
-        <div class="edu-dot"></div>
-        <div class="edu-body">
-          <strong>Seoul National University</strong>
-          <div class="edu-meta">B.S. in Computer Science &amp; Engineering &nbsp;·&nbsp; 2025 – present</div>
+  <div id="education">
+    <div class="section-wrap">
+      <div class="section-eyebrow">Background</div>
+      <div class="section-title">Education</div>
+      <div class="edu-grid">
+        <div class="card">
+          <div class="card-title">Seoul National University</div>
+          <div class="card-meta">B.S. in Computer Science &amp; Engineering &nbsp;·&nbsp; 2025 – present</div>
+          <div class="card-body">Currently pursuing undergraduate studies in the College of Engineering, with coursework spanning algorithms, systems, mathematics, and theoretical computer science.</div>
+        </div>
+        <div class="card">
+          <div class="card-title">Sunrin Internet High School</div>
+          <div class="card-meta">2022 – 2024</div>
+          <div class="card-body">Specialized high school focused on computing. Competed internationally in informatics olympiads while enrolled, representing South Korea at IOI 2022 and APIO.</div>
         </div>
       </div>
     </div>
-
-    <div class="card">
-      <div class="edu-entry">
-        <div class="edu-dot" style="background:var(--silver)"></div>
-        <div class="edu-body">
-          <strong>Sunrin Internet High School</strong>
-          <div class="edu-meta">2022 – 2024</div>
-        </div>
-      </div>
-    </div>
-  </section>
+  </div>
 
   <!-- COMPETITIVE PROGRAMMING -->
-  <section id="cp">
-    <div class="section-title">Competitive Programming</div>
+  <div class="section-soft-full" id="cp">
+    <div class="section-wrap">
+      <div class="section-eyebrow">Skills</div>
+      <div class="section-title">Competitive Programming</div>
 
-    <div class="ratings-grid">
-      <div class="rating-card">
-        <div class="platform">Codeforces</div>
-        <div class="rating-num">2474</div>
-        <div class="rating-label">International Grandmaster</div>
-        <a href="https://codeforces.com/profile/jjang36524" target="_blank">→ View profile</a>
+      <div class="stat-grid">
+        <div class="stat-card">
+          <div class="stat-label">Codeforces</div>
+          <div class="stat-number">2474</div>
+          <div class="stat-sub">International Grandmaster</div>
+          <a class="stat-link" href="https://codeforces.com/profile/jjang36524" target="_blank">View profile →</a>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">AtCoder</div>
+          <div class="stat-number">2328</div>
+          <div class="stat-sub">Red Coder</div>
+          <a class="stat-link" href="https://atcoder.jp/users/jjang36524" target="_blank">View profile →</a>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">IOI Medals</div>
+          <div class="stat-number">2</div>
+          <div class="stat-sub">Bronze 2021 · Gold 2022</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">APIO Top Gold</div>
+          <div class="stat-number">2×</div>
+          <div class="stat-sub">1st place — 2022 &amp; 2024</div>
+        </div>
       </div>
-      <div class="rating-card">
-        <div class="platform">AtCoder</div>
-        <div class="rating-num">2328</div>
-        <div class="rating-label">Red Coder</div>
-        <a href="https://atcoder.jp/users/jjang36524" target="_blank">→ View profile</a>
+
+      <div class="card" style="padding:32px;">
+        <div class="card-title" style="margin-bottom:12px;">Algorithm Focus Areas</div>
+        <div class="card-body">
+          Graph theory · Dynamic programming · Data structures · Combinatorics ·
+          Number theory · Computational geometry · String algorithms
+        </div>
       </div>
     </div>
-
-    <div class="card">
-      <p style="font-size:.95rem; color:var(--muted);">
-        I focus on algorithm design and competitive problem solving — covering areas such as
-        graph theory, dynamic programming, data structures, combinatorics, and number theory.
-        I have participated under the handle <strong>jjang36524</strong> across major online judges.
-      </p>
-    </div>
-  </section>
+  </div>
 
   <!-- AWARDS -->
-  <section id="awards">
-    <div class="section-title">Awards &amp; Activities</div>
+  <div id="awards">
+    <div class="section-wrap">
+      <div class="section-eyebrow">Achievements</div>
+      <div class="section-title">Awards &amp; Activities</div>
 
-    <div class="card">
-
-      <div class="award-entry">
-        <div class="medal">🥇</div>
-        <div class="award-body">
-          <strong>Asia-Pacific Informatics Olympiad (APIO) — 1st Place (Top Gold)</strong>
-          <span>2022 &amp; 2024 &nbsp;·&nbsp; South Korean National Team</span>
+      <div class="card" style="padding:32px;">
+        <div class="award-row">
+          <span class="award-badge badge-gold">Gold</span>
+          <div>
+            <div class="award-title">International Olympiad in Informatics (IOI) 2022</div>
+            <div class="award-detail">Gold Medal · Ranked 22nd worldwide · South Korean National Team</div>
+          </div>
+        </div>
+        <div class="award-row">
+          <span class="award-badge badge-bronze">Bronze</span>
+          <div>
+            <div class="award-title">International Olympiad in Informatics (IOI) 2021</div>
+            <div class="award-detail">Bronze Medal · Ranked 120th worldwide · South Korean National Team</div>
+          </div>
+        </div>
+        <div class="award-row">
+          <span class="award-badge badge-gold">1st</span>
+          <div>
+            <div class="award-title">Asia-Pacific Informatics Olympiad (APIO) 2022 &amp; 2024</div>
+            <div class="award-detail">Top Gold — 1st Place both years · South Korean National Team</div>
+          </div>
+        </div>
+        <div class="award-row">
+          <span class="award-badge badge-special">8th</span>
+          <div>
+            <div class="award-title">ICPC Seoul Regional 2025</div>
+            <div class="award-detail">8th Place · Team "ThirdHighSchool" · International Collegiate Programming Contest</div>
+          </div>
         </div>
       </div>
-
-      <div class="award-entry">
-        <div class="medal">🥇</div>
-        <div class="award-body">
-          <strong>International Olympiad in Informatics (IOI) — Gold Medal</strong>
-          <span>2022 &nbsp;·&nbsp; Ranked 22nd worldwide &nbsp;·&nbsp; South Korean National Team</span>
-        </div>
-      </div>
-
-      <div class="award-entry">
-        <div class="medal">🥉</div>
-        <div class="award-body">
-          <strong>International Olympiad in Informatics (IOI) — Bronze Medal</strong>
-          <span>2021 &nbsp;·&nbsp; Ranked 120th worldwide &nbsp;·&nbsp; South Korean National Team</span>
-        </div>
-      </div>
-
-      <div class="award-entry">
-        <div class="medal">🏆</div>
-        <div class="award-body">
-          <strong>ICPC Seoul Regional — 8th Place</strong>
-          <span>2025 &nbsp;·&nbsp; Team "ThirdHighSchool"</span>
-        </div>
-      </div>
-
     </div>
-  </section>
+  </div>
 
   <!-- COURSES -->
-  <section id="courses">
-    <div class="section-title">Course Plan</div>
-
-    <div class="card">
-      <div class="courses-grid">
-        <div class="course-group">
-          <h3>Next Semester</h3>
-          <ul>
+  <div class="section-soft-full" id="courses">
+    <div class="section-wrap">
+      <div class="section-eyebrow">Academic Plan</div>
+      <div class="section-title">Course Plan</div>
+      <div class="course-cols">
+        <div class="card" style="padding:32px;">
+          <div class="course-group-title">Next Semester</div>
+          <ul class="course-list">
             <li>Computer Structure</li>
             <li>Electrical &amp; Electronic Circuit</li>
             <li>Engineering Mathematics 2</li>
             <li>Automata Theory</li>
           </ul>
         </div>
-        <div class="course-group">
-          <h3>Next Year</h3>
-          <ul>
+        <div class="card" style="padding:32px;">
+          <div class="course-group-title">Next Year</div>
+          <ul class="course-list">
             <li>System Programming</li>
             <li>Operating System</li>
             <li>Programming Language</li>
@@ -512,51 +782,54 @@
         </div>
       </div>
     </div>
-  </section>
+  </div>
 
   <!-- CONTACT -->
-  <section id="contact">
-    <div class="section-title">Contact</div>
-
-    <div class="card">
-      <div class="contact-row">
-        <div class="contact-icon">✉️</div>
-        <div>
-          <div style="font-size:.8rem;color:var(--muted);margin-bottom:2px">Email</div>
-          <a href="mailto:jjang36524@snu.ac.kr">jjang36524@snu.ac.kr</a>
+  <div id="contact">
+    <div class="section-wrap">
+      <div class="section-eyebrow">Get in Touch</div>
+      <div class="section-title">Contact</div>
+      <div class="contact-grid">
+        <div class="contact-card">
+          <div class="contact-type">Email</div>
+          <div class="contact-value"><a href="mailto:jjang36524@snu.ac.kr">jjang36524@snu.ac.kr</a></div>
         </div>
-      </div>
-      <div class="contact-row">
-        <div class="contact-icon">🐙</div>
-        <div>
-          <div style="font-size:.8rem;color:var(--muted);margin-bottom:2px">GitHub</div>
-          <a href="https://github.com/jjang36524" target="_blank">github.com/jjang36524</a>
+        <div class="contact-card">
+          <div class="contact-type">GitHub</div>
+          <div class="contact-value"><a href="https://github.com/jjang36524" target="_blank">github.com/jjang36524</a></div>
         </div>
-      </div>
-      <div class="contact-row">
-        <div class="contact-icon">⚡</div>
-        <div>
-          <div style="font-size:.8rem;color:var(--muted);margin-bottom:2px">Codeforces</div>
-          <a href="https://codeforces.com/profile/jjang36524" target="_blank">codeforces.com/profile/jjang36524</a>
+        <div class="contact-card">
+          <div class="contact-type">Codeforces</div>
+          <div class="contact-value"><a href="https://codeforces.com/profile/jjang36524" target="_blank">jjang36524</a></div>
         </div>
-      </div>
-      <div class="contact-row">
-        <div class="contact-icon">🌸</div>
-        <div>
-          <div style="font-size:.8rem;color:var(--muted);margin-bottom:2px">AtCoder</div>
-          <a href="https://atcoder.jp/users/jjang36524" target="_blank">atcoder.jp/users/jjang36524</a>
+        <div class="contact-card">
+          <div class="contact-type">AtCoder</div>
+          <div class="contact-value"><a href="https://atcoder.jp/users/jjang36524" target="_blank">jjang36524</a></div>
         </div>
       </div>
     </div>
+  </div>
 
-    <div class="ai-note">
-      <strong>AI usage disclosure:</strong> This website was generated with the assistance of Replit Agent using the prompt:
-      <em>"Create a self-introduction website using CV.pdf and jth.jpg. Include a navigation menu."</em>
-    </div>
-  </section>
+  <!-- AI DISCLOSURE -->
+  <div class="ai-strip">
+    <strong>AI Usage Disclosure:</strong> This website was generated with Replit Agent using the prompt:
+    <em>"Create a self-introduction website using CV.pdf and jth.jpg. Include a navigation menu."</em>
+    Design inspired by NVIDIA's marketing design system.
+  </div>
 
+  <!-- FOOTER -->
   <footer>
-    &copy; 2025 Taehwan Jang &nbsp;·&nbsp; Seoul National University
+    <div class="footer-inner">
+      <hr class="footer-divider" />
+      <div class="footer-bottom">
+        <span class="footer-copy">&copy; 2025 Taehwan Jang · Seoul National University</span>
+        <ul class="footer-links">
+          <li><a href="mailto:jjang36524@snu.ac.kr">Email</a></li>
+          <li><a href="https://github.com/jjang36524" target="_blank">GitHub</a></li>
+          <li><a href="assets/CV.pdf" target="_blank">CV</a></li>
+        </ul>
+      </div>
+    </div>
   </footer>
 
 </body>
